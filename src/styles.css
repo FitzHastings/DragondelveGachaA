@@ -1,0 +1,110 @@
+/* Copyright 2024 Prokhor Kalinin
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ */
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+:root {
+    --backdrop-color: #2E3440;
+    --background-color: #3B4252;
+    --content-color: #434C5E;
+    --highlight-color: #4C566A;
+
+    --text-color: #E5E9F0;
+    --nord6: #ECEFF4;
+
+    --action-color: #8FBCBB;
+    --nord8: #88C0D0;
+    --nord9: #81A1C1;
+    --nord10: #5E81AC;
+
+    --error-color: #BF616A;
+    --notice-color: #D08770;
+    --warning-color: #EBCB8B;
+    --confirmation-color: #A3BE8C;
+    --misc-color: #B48EAD;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: local('JetBrains Mono'), url(/fonts/JetBrainsMono/static/JetBrainsMono-Medium.ttf) format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+body {
+    background-color: var(--backdrop-color);
+    color: var(--text-color);
+    margin: 0;
+}
+
+button {
+    background-color: var(--content-color);
+    padding: 7px;
+    color: #fff;
+    border: 3px solid var(--content-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: var(--backdrop-color);
+    border: 3px solid var(--backdrop-color);
+    color: var(--highlight-color);
+    cursor: not-allowed;
+}
+
+button:enabled:hover {
+    background-color: var(--highlight-color);
+}
+
+button:enabled:active {
+    border: 3px solid var(--action-color);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+    padding: 8px;
+    border: 2px solid var(--content-color);
+    background-color: var(--content-color);
+    border-radius: 4px;
+    color: var(--text-color);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    outline: none;
+    border: 2px solid #88C0D0;
+}
+
+hr {
+    color: var(--text-color);
+}
+
+a {
+    color: var(--action-color);
+}
+
