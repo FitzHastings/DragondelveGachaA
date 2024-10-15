@@ -14,7 +14,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 
 import { apiUrl } from '../../shared/utils/api-url';
@@ -31,7 +31,8 @@ export class AuthService {
     }
 
     public login(username: string, password: string): Observable<{ access_token: string }> {
-        return this.http.post<{ access_token: string }>(this.loginUrl, { username, password }).pipe(
+        const headers = new HttpHeaders().set('X-Skip-Auth', 'true');
+        return this.http.post<{ access_token: string }>(this.loginUrl, { username, password }, { headers }).pipe(
             tap((response) => this.setToken(response.access_token))
         );
     }
@@ -48,7 +49,6 @@ export class AuthService {
         const token = this.getToken();
         if (!token)
             return of('');
-
 
         return this.http.get<{ session: { username: string } }>(this.verifyTokenUrl, {
             headers: { 'Authorization': `Bearer ${token}` }
