@@ -50,9 +50,7 @@ export class AuthService {
         if (!token)
             return of('');
 
-        return this.http.get<{ session: { username: string } }>(this.verifyTokenUrl, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        }).pipe(
+        return this.http.get<{ session: { username: string } }>(this.verifyTokenUrl).pipe(
             map((response) => response.session.username),
             catchError(() => of(''))
         );
