@@ -15,10 +15,14 @@
 
 import { Component } from '@angular/core';
 
+import { WorldTableComponent } from './table/table.component';
+
 @Component({
     selector: 'app-world',
     standalone: true,
-    imports: [],
+    imports: [
+        WorldTableComponent
+    ],
     templateUrl: './world.component.html',
     styleUrl: './world.component.css'
 })

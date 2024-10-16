@@ -1,0 +1,47 @@
+<!-- Copyright 2024 Prokhor Kalinin
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<div class="form-container">
+    <h1 *ngIf="!worldId">Add New World</h1>
+    <h1 *ngIf="worldId">Edit World</h1>
+</div>
+<form class="form-container form" [formGroup]="worldForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="name">World Name:</label>
+        <input type="text" id="name" formControlName="name">
+        <div *ngIf="worldForm.get('name')?.invalid && worldForm.get('name')?.touched">
+            <small>Name is required.</small>
+        </div>
+    </div>
+
+    <div *ngIf="!worldForm.get('imagePath')?.value" class="form-group">
+        <label for="file">World Image:</label>
+        <input type="file" id="file" (change)="onFileSelected($event)">
+        <div *ngIf="fileUploadError">
+            <small>{{ fileUploadError }}</small>
+        </div>
+    </div>
+    <div class="image-container" *ngIf="worldForm.get('imagePath')?.value">
+        <img class="world-image" src="{{ apiUrl + '/' + worldForm.get('imagePath')?.value }}" alt="World Image">
+        <button class="form-button" type="button" (click)="removeImage()">Remove Image</button>
+    </div>
+
+    <div class="form-group">
+        <button class="form-button" type="submit" [disabled]="worldForm.invalid">Submit</button>
+        <div *ngIf="errorMessage">
+            <small class="error-message" >{{ errorMessage }}</small>
+        </div>
+    </div>
+</form>

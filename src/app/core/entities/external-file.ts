@@ -13,7 +13,15 @@
    limitations under the License.
  */
 
-h2 {
-    font-size: 26px;
-    margin-left: 17px;
+import { GeneralEntity } from './general-entity';
+
+/**
+ * Represents an external file.
+ *
+ * @interface ExternalFile
+ * @property {number} id - The unique identifier for the external file.
+ * @property {string} path  path to the external file.
+ */
+export interface ExternalFile extends GeneralEntity{
+    path: string;
 }

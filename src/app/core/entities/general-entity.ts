@@ -13,7 +13,6 @@
    limitations under the License.
  */
 
-h2 {
-    font-size: 26px;
-    margin-left: 17px;
+export interface GeneralEntity {
+    id?: number;
 }

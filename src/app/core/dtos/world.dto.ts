@@ -13,7 +13,16 @@
    limitations under the License.
  */
 
-h2 {
-    font-size: 26px;
-    margin-left: 17px;
+import { GeneralEntity } from '../entities/general-entity';
+
+/**
+ * Represents a Data Transfer Object (DTO) for a world.
+ *
+ * This interface defines the structure of the world data that is transferred to server for creation or
+ * modification.
+ */
+export interface WorldDto extends GeneralEntity {
+    name?: string;
+    imageIds?: (number | undefined)[];
+    logoId?: number;
 }

@@ -21,6 +21,7 @@ html, body {
 :root {
     --backdrop-color: #2E3440;
     --background-color: #3B4252;
+    --backround-alt-color: #353b49;
     --content-color: #434C5E;
     --highlight-color: #4C566A;
 
@@ -33,10 +34,18 @@ html, body {
     --nord10: #5E81AC;
 
     --error-color: #BF616A;
+    --error-content-color: #984D54;
+    --error-background-color: #85434A;
+
     --notice-color: #D08770;
+
     --warning-color: #EBCB8B;
+    --warning-content-color: #BCA26F;
+    --warning-background-color: #a48e61;
+
     --confirmation-color: #A3BE8C;
-    --misc-color: #B48EAD;
+    --confirmation-content-color: #829870;
+    --confirmation-background-color: #728562;
 }
 
 @font-face {

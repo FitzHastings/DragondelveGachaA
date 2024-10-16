@@ -1,0 +1,128 @@
+/* Copyright 2024 Prokhor Kalinin
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ */
+
+.table-container {
+    display: flex;
+    flex-grow: 1;
+    align-content: center;
+}
+
+.actions {
+    width: 140px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.image-column {
+    width: 49px;
+}
+
+.thumbnail-image {
+    width: 100%;
+    height: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 20px 0 10px; /* Add margins around the table */
+}
+
+th, td {
+    border: 1px solid var(--highlight-color);
+    padding: 8px;
+}
+
+/* Style the table headers */
+th {
+    background-color: var(--background-color);
+    text-align: left;
+}
+
+/* Alternate row colors */
+tbody tr:nth-child(odd) {
+    background-color: var(--backdrop-color); /* Light grey for odd rows */
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--backround-alt-color);/* White for even rows */
+}
+
+/* Optional: Add some hover effect to rows */
+tbody tr:hover {
+    background-color: var(--content-color); /* Slight highlight on hover */
+}
+
+.table-button {
+    background-color: var(--content-color);
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    color: var(--text-color);
+    border: 3px solid var(--content-color);
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.remove-button:enabled {
+    background-color: var(--error-background-color);
+    border-color: var(--error-background-color);
+}
+
+.remove-button:enabled:hover {
+    background-color: var(--error-content-color);
+    border-color: var(--error-content-color);
+}
+
+.remove-button:enabled:active {
+    background-color: var(--error-content-color);
+    border-color: var(--error-color);
+}
+
+.add-button:enabled {
+    background-color: var(--confirmation-background-color);
+    border-color: var(--confirmation-background-color);
+}
+
+.add-button:enabled:hover {
+    background-color: var(--confirmation-content-color);
+    border-color: var(--confirmation-content-color);
+}
+
+.add-button:enabled:active{
+    background-color: var(--confirmation-content-color);
+    border-color: var(--confirmation-color);
+}
+
+.edit-button:enabled {
+    background-color: var(--warning-background-color);
+    border-color: var(--warning-background-color);
+}
+
+.edit-button:enabled:hover {
+    background-color: var(--warning-content-color);
+    border-color: var(--warning-content-color);
+}
+
+.edit-button:enabled:active {
+    background-color: var(--warning-content-color);
+    border-color: var(--warning-color);
+}
+
+
