@@ -1,0 +1,43 @@
+<!-- Copyright 2024 Prokhor Kalinin
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<div class="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th class="table-header table-cell">Username</th>
+            <th class="table-header table-cell image-column">Img</th>
+            <th class="table-header table-cell">Role</th>
+            <th class="table-header table-cell">Energy</th>
+            <th class="table-header table-cell">Dust</th>
+            <app-action-table-header class="table-header table-cell actions" [navigateToForm]="navigateToForm"/>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+            <td class="table-cell">{{ user.username }}</td>
+            <app-image-table-cell class="table-cell image-column" [image]="user.image"/>
+            <td class="table-cell">{{ user.role }}</td>
+            <td class="table-cell">{{ '⚡ ' + user.energy }}</td>
+            <td class="table-cell">{{ '✨ ' + user.dust }}</td>
+            <app-action-table-cell class="table-cell actions"
+                                   [navigateToForm]="navigateToForm"
+                                   [removeAction]="deleteRarity"
+                                   [entity]="user"
+            />
+        </tr>
+        </tbody>
+    </table>
+</div>

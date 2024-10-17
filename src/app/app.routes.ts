@@ -23,6 +23,8 @@ import { WorldComponent } from './feature/main/world/world.component';
 import { WorldFormComponent } from './feature/main/world/form/world-form.component';
 import { RarityComponent } from './feature/main/rarity/rarity.component';
 import { RarityFormComponent } from './feature/main/rarity/form/form.component';
+import { UserComponent } from './feature/main/user/user.component';
+import { UserFormComponent } from './feature/main/user/form/form.component';
 
 export const routes: Routes = [
     {
@@ -35,7 +37,10 @@ export const routes: Routes = [
             { path: 'worlds/form', component: WorldFormComponent },
             { path: 'rarities', component: RarityComponent },
             { path: 'rarities/form/:id', component: RarityFormComponent },
-            { path: 'rarities/form', component: RarityFormComponent }
+            { path: 'rarities/form', component: RarityFormComponent },
+            { path: 'users', component: UserComponent },
+            { path: 'users/form/:id', component: UserFormComponent },
+            { path: 'users/form', component: UserFormComponent }
         ]
     },
     { path: 'login', component: LoginComponent },

@@ -13,40 +13,41 @@
    limitations under the License.
  */
 
-import { NgForOf } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForOf } from '@angular/common';
 
+import { Rarity } from '../../../../core/entities/rarity';
+import { PagedEntities } from '../../../../core/entities/paged-entities';
+import { User } from '../../../../core/entities/user';
+import { UserService } from '../../../../core/services/user.service';
 import { ActionTableCellComponent } from '../../../../shared/action-table-cell/action-table-cell.component';
 import { ActionTableHeaderComponent } from '../../../../shared/action-table-header/action-table-header.component';
 import { ImageTableCellComponent } from '../../../../shared/image-table-cell/image-table-cell.component';
-import { Rarity } from '../../../../core/entities/rarity';
-import { RarityService } from '../../../../core/services/rarity.service';
-import { PagedEntities } from '../../../../core/entities/paged-entities';
 
 @Component({
-    selector: 'app-rarity-table',
+    selector: 'app-users-table',
     standalone: true,
     imports: [
         ActionTableCellComponent,
         ActionTableHeaderComponent,
-        ImageTableCellComponent,
-        NgForOf
+        NgForOf,
+        ImageTableCellComponent
     ],
     templateUrl: './table.component.html',
     styleUrl: './table.component.css'
 })
-export class RarityTableComponent {
-    public rarities: Rarity[] = [];
+export class UserTableComponent {
+    public users: User[] = [];
 
-    public constructor(private rarityService: RarityService, private router: Router) {}
+    public constructor(private userService: UserService, private router: Router) {}
 
     public ngOnInit(): void {
         this.loadRarities();
     }
 
     public deleteRarity = (id: number): void => {
-        this.rarityService.deleteRarity(id).subscribe(
+        this.userService.deleteUser(id).subscribe(
             () => {
                 this.loadRarities();
             },
@@ -58,15 +59,15 @@ export class RarityTableComponent {
 
     public navigateToForm = (id: number | undefined = undefined): void => {
         if (id)
-            this.router.navigate(['/rarities/form', id]);
+            this.router.navigate(['/users/form', id]);
         else
-            this.router.navigate(['/rarities/form']);
+            this.router.navigate(['/users/form']);
     };
 
     private loadRarities(): void {
-        this.rarityService.fetchRarities().subscribe(
+        this.userService.fetchUsers().subscribe(
             (data: PagedEntities<Rarity>) => {
-                this.rarities = data.entities;
+                this.users = data.entities;
             },
             (error: unknown) => {
                 console.error('There was an error retrieving the worlds!', error);

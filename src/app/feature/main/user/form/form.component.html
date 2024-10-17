@@ -1,0 +1,73 @@
+<!-- Copyright 2024 Prokhor Kalinin
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<div class="form-container">
+    <h1 *ngIf="!userId">Add New User</h1>
+    <h1 *ngIf="userId">Edit User</h1>
+</div>
+<form class="form-container form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" formControlName="username">
+        <div *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched">
+            <small class="error-message">Username is required.</small>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password">
+        <div *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+            <small class="error-message">Password is Invalid</small>
+        </div>
+    </div>
+
+    <label>Image:</label>
+    <app-image-uploader
+        [image]="image"
+        (imageChanged)="onImageChanged($event)"
+    />
+
+    <div class="form-group">
+        <label for="role">Role:</label>
+        <input type="text" id="role" formControlName="role">
+        <div *ngIf="userForm.get('role')?.invalid && userForm.get('role')?.touched">
+            <small class="error-message">Role is Invalid</small>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="energy">Energy:</label>
+        <input type="text" id="energy" formControlName="energy">
+        <div *ngIf="userForm.get('energy')?.invalid && userForm.get('energy')?.touched">
+            <small class="error-message">Energy is Invalid</small>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="dust">Dust:</label>
+        <input type="text" id="dust" formControlName="dust">
+        <div *ngIf="userForm.get('dust')?.invalid && userForm.get('dust')?.touched">
+            <small class="error-message">Dust is Invalid</small>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="form-button" type="submit" [disabled]="userForm.invalid">Submit</button>
+        <div *ngIf="errorMessage">
+            <small class="error-message" >{{ errorMessage }}</small>
+        </div>
+    </div>
+</form>

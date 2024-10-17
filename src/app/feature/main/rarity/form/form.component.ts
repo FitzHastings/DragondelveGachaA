@@ -19,7 +19,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ImageUploaderComponent } from '../../../../shared/image-uploader/image-uploader.component';
-import { ExternalFile } from '../../../../core/entities/external-file';
 import { RarityService } from '../../../../core/services/rarity.service';
 import { Rarity } from '../../../../core/entities/rarity';
 
@@ -39,7 +38,6 @@ export class RarityFormComponent {
     public rarityForm: FormGroup;
     public errorMessage: string | null = null;
     public rarityId: number | null = null;
-    protected image?: ExternalFile;
 
     public constructor(
         private fb: FormBuilder,
@@ -53,7 +51,8 @@ export class RarityFormComponent {
                 Validators.required,
                 Validators.min(0),
                 Validators.max(100),
-                Validators.pattern(/^[1-9]\d*$/) ]]
+                Validators.pattern(/^[1-9]\d*$/)
+            ]]
         });
     }
 
