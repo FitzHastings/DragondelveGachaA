@@ -13,19 +13,14 @@
    limitations under the License.
  */
 
-import { TestBed } from '@angular/core/testing';
+import { GeneralEntity } from '../entities/general-entity';
 
-import { RegistrationService } from '../../../../src/app/core/services/registration.service';
-
-describe('UserService', () => {
-    let service: RegistrationService;
-
-    beforeEach(() => {
-        TestBed.configureTestingModule({});
-        service = TestBed.inject(RegistrationService);
-    });
-
-    it('should be created', () => {
-        expect(service).toBeTruthy();
-    });
-});
+/**
+ * Represents a data transfer object for a rarity entity.
+ * Extends the GeneralEntity interface.
+ *
+ */
+export interface RarityDto extends GeneralEntity {
+    name?: string;
+    weight?: number;
+}

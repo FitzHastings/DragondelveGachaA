@@ -19,6 +19,10 @@ import { catchError, map, Observable, of, tap } from 'rxjs';
 
 import { apiUrl } from '../../shared/utils/api-url';
 
+/**
+ * AuthService is responsible for handling user authentication tasks such as
+ * logging in, managing and verifying authentication tokens, and logging out.
+ */
 @Injectable({
     providedIn: 'root'
 })
@@ -30,6 +34,13 @@ export class AuthService {
     public constructor(private http: HttpClient) {
     }
 
+    /**
+     * Authenticates a user with the provided username and password.
+     *
+     * @param {string} username - The username of the user attempting to log in.
+     * @param {string} password - The password of the user attempting to log in.
+     * @return {Observable<{ access_token: string }>} An observable emitting the access token upon successful login.
+     */
     public login(username: string, password: string): Observable<{ access_token: string }> {
         const headers = new HttpHeaders().set('X-Skip-Auth', 'true');
         return this.http.post<{ access_token: string }>(this.loginUrl, { username, password }, { headers }).pipe(
@@ -37,14 +48,30 @@ export class AuthService {
         );
     }
 
+    /**
+     * Stores the provided token in the local storage.
+     *
+     * @param {string} token - The token to be saved.
+     * @return {void}
+     */
     public setToken(token: string): void {
         localStorage.setItem(this.tokenKey, token);
     }
 
+    /**
+     * Retrieves the token from local storage.
+     *
+     * @return {string | null} The token if it exists in local storage, otherwise null.
+     */
     public getToken(): string | null {
         return localStorage.getItem(this.tokenKey);
     }
 
+    /**
+     * Checks if the user is authenticated by verifying the token.
+     *
+     * @return An Observable that emits the username if authenticated, otherwise an empty string.
+     */
     public isAuthenticated(): Observable<string> {
         const token = this.getToken();
         if (!token)
@@ -56,6 +83,11 @@ export class AuthService {
         );
     }
 
+    /**
+     * Logs the user out by removing the authentication token from local storage.
+     *
+     * @return {void} This method does not return a value.
+     */
     public logout(): void {
         localStorage.removeItem(this.tokenKey);
     }

@@ -13,19 +13,23 @@
    limitations under the License.
  */
 
-import { TestBed } from '@angular/core/testing';
+import { RarityDto } from '../dtos/rarity.dto';
 
-import { RegistrationService } from '../../../../src/app/core/services/registration.service';
+import { GeneralEntity } from './general-entity';
 
-describe('UserService', () => {
-    let service: RegistrationService;
+/**
+ * Class representing a Rarity entity that implements the GeneralEntity interface.
+ */
+export class Rarity implements GeneralEntity {
+    public id?: number;
+    public name?: string;
+    public weight?: number;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({});
-        service = TestBed.inject(RegistrationService);
-    });
-
-    it('should be created', () => {
-        expect(service).toBeTruthy();
-    });
-});
+    public toDto(): RarityDto {
+        return {
+            id: this.id,
+            name: this.name,
+            weight: this.weight
+        };
+    }
+}

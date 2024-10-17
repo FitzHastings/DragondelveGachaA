@@ -13,22 +13,18 @@
    limitations under the License.
  */
 
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
 
-import { apiUrl } from '../../shared/utils/api-url';
+import { RarityTableComponent } from './table/table.component';
 
-@Injectable({
-    providedIn: 'root'
+@Component({
+    selector: 'app-rarity',
+    standalone: true,
+    imports: [
+        RarityTableComponent
+    ],
+    templateUrl: './rarity.component.html',
+    styleUrl: './rarity.component.css'
 })
-export class UserService {
-    private createUserUrl = `${apiUrl}/user/register`;
-
-    public constructor(private http: HttpClient) {
-    }
-
-    public register(username: string, password: string): Observable<void> {
-        return this.http.post<void>(this.createUserUrl, { username, password });
-    }
+export class RarityComponent {
 }

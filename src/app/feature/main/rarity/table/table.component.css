@@ -13,19 +13,12 @@
    limitations under the License.
  */
 
-import { TestBed } from '@angular/core/testing';
+.table-container {
+    display: flex;
+    flex-grow: 1;
+    align-content: center;
+}
 
-import { RegistrationService } from '../../../../src/app/core/services/registration.service';
-
-describe('UserService', () => {
-    let service: RegistrationService;
-
-    beforeEach(() => {
-        TestBed.configureTestingModule({});
-        service = TestBed.inject(RegistrationService);
-    });
-
-    it('should be created', () => {
-        expect(service).toBeTruthy();
-    });
-});
+.actions {
+    width: 140px;
+}

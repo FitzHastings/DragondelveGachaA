@@ -18,7 +18,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { NgIf, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { UserService } from '../../../core/services/user.service';
+import { RegistrationService } from '../../../core/services/registration.service';
 
 @Component({
     selector: 'app-signup',
@@ -35,7 +35,7 @@ export class SignupComponent {
     public signUpForm: FormGroup;
     public errorMessage: string | null = null;
 
-    public constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+    public constructor(private fb: FormBuilder, private userService: RegistrationService, private router: Router) {
         this.signUpForm = this.fb.group({
             login: ['', [Validators.required]],
             password: ['', [Validators.required, Validators.minLength(6)]],
@@ -66,10 +66,9 @@ export class SignupComponent {
         const password = form.get('password');
         const confirmPassword = form.get('confirmPassword');
 
-        if (password && confirmPassword && password.value !== confirmPassword.value) {
+        if (password && confirmPassword && password.value !== confirmPassword.value)
             confirmPassword.setErrors({ mismatch: true });
-        } else if (confirmPassword != null) {
+        else if (confirmPassword != null)
             confirmPassword.setErrors(null);
-        }
     }
 }

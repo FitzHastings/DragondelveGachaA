@@ -18,27 +18,30 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { apiUrl } from '../../shared/utils/api-url';
-import { ExternalFile } from '../entities/external-file';
 
+/**
+ * UserService is responsible for user-related operations such as registration.
+ * It communicates with the backend API to perform these tasks.
+ *
+ * Injectable as a singleton service within the root injector.
+ */
 @Injectable({
     providedIn: 'root'
 })
-export class FileService {
-    private uploadFileUrl = `${apiUrl}/file/upload`;
+export class RegistrationService {
+    private createUserUrl = `${apiUrl}/user/register`;
 
     public constructor(private http: HttpClient) {
     }
 
     /**
-     * Uploads an image to the specified server endpoint.
+     * Registers a new user with the provided username and password.
      *
-     * @param {File} file - The image file to be uploaded.
-     * @return {Observable<ExternalFile>} An observable containing the response data of the uploaded file.
+     * @param {string} username - The username of the new user.
+     * @param {string} password - The password of the new user.
+     * @return {Observable<void>} - An observable that completes when the registration process is finished.
      */
-    public uploadImage(file: File): Observable<ExternalFile> {
-        const formData = new FormData();
-        formData.append('file', file);
-        return this.http.post<ExternalFile>(this.uploadFileUrl, formData, {
-        });
+    public register(username: string, password: string): Observable<void> {
+        return this.http.post<void>(this.createUserUrl, { username, password });
     }
 }

@@ -21,6 +21,8 @@ import { MainLayoutComponent } from './shared/main-layout/main-layout.component'
 import { HomeComponent } from './feature/main/home/home.component';
 import { WorldComponent } from './feature/main/world/world.component';
 import { WorldFormComponent } from './feature/main/world/form/world-form.component';
+import { RarityComponent } from './feature/main/rarity/rarity.component';
+import { RarityFormComponent } from './feature/main/rarity/form/form.component';
 
 export const routes: Routes = [
     {
@@ -30,7 +32,10 @@ export const routes: Routes = [
             { path: '', component: HomeComponent },
             { path: 'worlds', component: WorldComponent },
             { path: 'worlds/form/:id', component: WorldFormComponent },
-            { path: 'worlds/form', component: WorldFormComponent }
+            { path: 'worlds/form', component: WorldFormComponent },
+            { path: 'rarities', component: RarityComponent },
+            { path: 'rarities/form/:id', component: RarityFormComponent },
+            { path: 'rarities/form', component: RarityFormComponent }
         ]
     },
     { path: 'login', component: LoginComponent },
