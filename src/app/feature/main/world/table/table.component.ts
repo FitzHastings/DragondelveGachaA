@@ -17,24 +17,28 @@ import { Component, OnInit } from '@angular/core';
 import { NgForOf, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { apiUrl } from '../../../../shared/utils/api-url';
 import { World } from '../../../../core/entities/world';
 import { WorldService } from '../../../../core/services/world.service';
 import { PagedEntities } from '../../../../core/entities/paged-entities';
+import { ImageTableCellComponent } from '../../../../shared/image-table-cell/image-table-cell.component';
+import { ActionTableCellComponent } from '../../../../shared/action-table-cell/action-table-cell.component';
+import { ActionTableHeaderComponent } from '../../../../shared/action-table-header/action-table-header.component';
 
 @Component({
     selector: 'app-world-table',
     standalone: true,
     imports: [
         NgForOf,
-        NgIf
+        NgIf,
+        ImageTableCellComponent,
+        ActionTableCellComponent,
+        ActionTableHeaderComponent
     ],
     templateUrl: './table.component.html',
     styleUrl: './table.component.css'
 })
 export class WorldTableComponent implements OnInit {
     public worlds: World[] = [];
-    protected readonly apiUrl = apiUrl;
 
     public constructor(private worldService: WorldService, private router: Router) {}
 
@@ -42,7 +46,7 @@ export class WorldTableComponent implements OnInit {
         this.loadWorlds();
     }
 
-    public deleteWorld(id: number): void {
+    public deleteWorld = (id: number): void => {
         this.worldService.deleteWorld(id).subscribe(
             () => {
                 this.loadWorlds();
@@ -51,14 +55,14 @@ export class WorldTableComponent implements OnInit {
                 console.error('There was an error retrieving the worlds!', error);
             }
         );
-    }
+    };
 
-    public navigateToForm(id: number | undefined = undefined): void {
+    public navigateToForm = (id: number | undefined = undefined): void => {
         if (id)
             this.router.navigate(['/worlds/form', id]);
         else
             this.router.navigate(['/worlds/form']);
-    }
+    };
 
     private loadWorlds(): void {
         this.worldService.fetchWorlds().subscribe(

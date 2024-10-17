@@ -12,28 +12,18 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
+import { Component, Input } from '@angular/core';
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    background-color: var(--background-color);
-    border-bottom: 1px solid var(--highlight-color);
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-}
-
-.user-info span {
-    margin-right: 10px;
-    font-size: 20px;
-}
-
-.logout-button {
-    padding: 4px;
-    width: 32px;
-    height: 32px;
+@Component({
+    selector: 'app-action-table-header',
+    standalone: true,
+    imports: [],
+    templateUrl: './action-table-header.component.html',
+    styleUrl: './action-table-header.component.css',
+    host: {
+        '[style.display]': '"table-cell"'
+    }
+})
+export class ActionTableHeaderComponent {
+    @Input() public navigateToForm?: () => void;
 }

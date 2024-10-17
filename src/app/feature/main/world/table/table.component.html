@@ -17,26 +17,23 @@
     <table>
         <thead>
         <tr>
-            <th>Name</th>
-            <th class="image-column">Img</th>
-            <th class="actions">Actions
-                <button  (click)="navigateToForm()" class="table-button add-button">+</button>
-            </th>
+            <th class="table-header table-cell">Name</th>
+            <th class="table-header table-cell image-column">Img</th>
+            <app-action-table-header
+                class="table-header table-cell actions"
+                [navigateToForm]="navigateToForm"
+            />
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let world of worlds">
-            <td>{{ world.name }}</td>
-            <td class="image-column">
-                <img *ngIf="world.logo?.path" class="thumbnail-image" src="{{apiUrl + '/' + world.logo?.path}}" alt="World Image"/>
-            </td>
-            <td class="actions">
-                <div class="toolbar">
-                    <button (click)="navigateToForm(world.id)" class="table-button edit-button">e</button>
-                    <button (click)="deleteWorld(world.id || -1)" class="table-button remove-button">-</button>
-                </div>
-            </td>
-            <!-- Add other cells as needed -->
+            <td class="table-cell">{{ world.name }}</td>
+            <app-image-table-cell class="table-cell image-column" [image]="world.logo"/>
+            <app-action-table-cell class="table-cell actions"
+                [navigateToForm]="navigateToForm"
+                [removeAction]="deleteWorld"
+                [entity]="world"
+            />
         </tr>
         </tbody>
     </table>

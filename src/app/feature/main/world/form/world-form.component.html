@@ -26,17 +26,11 @@
         </div>
     </div>
 
-    <div *ngIf="!worldForm.get('imagePath')?.value" class="form-group">
-        <label for="file">World Image:</label>
-        <input type="file" id="file" (change)="onFileSelected($event)">
-        <div *ngIf="fileUploadError">
-            <small>{{ fileUploadError }}</small>
-        </div>
-    </div>
-    <div class="image-container" *ngIf="worldForm.get('imagePath')?.value">
-        <img class="world-image" src="{{ apiUrl + '/' + worldForm.get('imagePath')?.value }}" alt="World Image">
-        <button class="form-button" type="button" (click)="removeImage()">Remove Image</button>
-    </div>
+    <label>World Logo:</label>
+    <app-image-uploader
+        [image]="image"
+        (imageChanged)="onImageChanged($event)">
+    </app-image-uploader>
 
     <div class="form-group">
         <button class="form-button" type="submit" [disabled]="worldForm.invalid">Submit</button>

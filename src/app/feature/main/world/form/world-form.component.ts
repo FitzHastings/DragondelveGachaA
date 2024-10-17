@@ -18,10 +18,10 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 
-import { apiUrl } from '../../../../shared/utils/api-url';
 import { WorldService } from '../../../../core/services/world.service';
-import { FileService } from '../../../../core/services/file.service';
 import { World } from '../../../../core/entities/world';
+import { ImageUploaderComponent } from '../../../../shared/image-uploader/image-uploader.component';
+import { ExternalFile } from '../../../../core/entities/external-file';
 
 @Component({
     selector: 'app-world-form',
@@ -30,7 +30,8 @@ import { World } from '../../../../core/entities/world';
     imports: [
         FormsModule,
         ReactiveFormsModule,
-        NgIf
+        NgIf,
+        ImageUploaderComponent
     ],
     standalone: true
 })
@@ -38,21 +39,17 @@ export class WorldFormComponent {
     public worldForm: FormGroup;
     public errorMessage: string | null = null;
     public worldId: number | null = null;
-    public fileUploadError: string | null = null;
-
-    protected readonly apiUrl = apiUrl;
+    protected image?: ExternalFile;
 
     public constructor(
         private fb: FormBuilder,
         private readonly router: Router,
         private readonly route: ActivatedRoute,
-        private readonly worldService: WorldService,
-        private readonly fileService: FileService
+        private readonly worldService: WorldService
     ) {
         this.worldForm = this.fb.group({
             name: ['', [Validators.required]],
-            imageId: [''],
-            imagePath: ['']
+            imageId: ['']
         });
     }
 
@@ -64,28 +61,14 @@ export class WorldFormComponent {
                 this.worldService.fetchWorldById(this.worldId).subscribe((world) => {
                     const formValue = {
                         name: world.name,
-                        imagePath: world.logo?.path,
                         imageId: world.logo?.id
                     };
+                    this.image = world.logo;
 
                     this.worldForm.patchValue(formValue);
                 });
             }
         });
-    }
-
-    public onFileSelected(event: Event): void {
-        const input = event.target as HTMLInputElement;
-        if (input.files && input.files.length > 0) {
-            const file = input.files[0];
-            this.fileService.uploadImage(file).subscribe({
-                next: (response) => {
-                    this.worldForm.get('imageId')?.setValue(response.id);
-                    this.fileUploadError = null;
-                },
-                error: () => this.fileUploadError = 'Failed to upload the file. Please try again.'
-            });
-        }
     }
 
     public onSubmit(): void {
@@ -116,7 +99,7 @@ export class WorldFormComponent {
         }
     }
 
-    public removeImage():void {
-        this.worldForm.patchValue({ imageId: null, imagePath: null });
+    public onImageChanged(image: ExternalFile): void {
+        this.worldForm.get('imageId')?.setValue(image.id);
     }
 }

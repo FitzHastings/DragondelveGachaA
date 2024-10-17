@@ -19,6 +19,8 @@
     </div>
     <div class="user-info">
         <span>{{ username | async }}</span>
-        <button (click)="signOut()">X</button>
+        <button class="logout-button" (click)="signOut()">
+            <img src="/icons/x-icon.png" alt="x">
+        </button>
     </div>
 </header>

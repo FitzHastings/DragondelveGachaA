@@ -13,27 +13,18 @@
    limitations under the License.
  */
 
-.header {
+.cell-body {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    background-color: var(--background-color);
-    border-bottom: 1px solid var(--highlight-color);
-}
-
-.user-info {
-    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+    justify-content: center;
     align-items: center;
 }
 
-.user-info span {
-    margin-right: 10px;
-    font-size: 20px;
-}
-
-.logout-button {
-    padding: 4px;
-    width: 32px;
-    height: 32px;
+.toolbar {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center; /* Center items vertically within toolbar */
 }

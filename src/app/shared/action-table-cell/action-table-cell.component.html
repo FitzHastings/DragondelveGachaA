@@ -1,4 +1,4 @@
-/* Copyright 2024 Prokhor Kalinin
+<!-- Copyright 2024 Prokhor Kalinin
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -11,29 +11,15 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
- */
+-->
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    background-color: var(--background-color);
-    border-bottom: 1px solid var(--highlight-color);
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-}
-
-.user-info span {
-    margin-right: 10px;
-    font-size: 20px;
-}
-
-.logout-button {
-    padding: 4px;
-    width: 32px;
-    height: 32px;
-}
+<div class="cell-body">
+<div class="toolbar">
+    <button (click)="navigateToForm && navigateToForm(entity?.id)" class="table-button edit-button">
+        <img src="/icons/edit-icon.png" alt="e">
+    </button>
+    <button (click)="removeAction && removeAction(entity?.id || -1)" class="table-button remove-button">
+        <img src="/icons/minus-icon.png" alt="-">
+    </button>
+</div>
+</div>

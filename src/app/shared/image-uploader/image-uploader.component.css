@@ -13,27 +13,27 @@
    limitations under the License.
  */
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    background-color: var(--background-color);
-    border-bottom: 1px solid var(--highlight-color);
+.form-group {
+    margin-bottom: 10px;
 }
 
-.user-info {
+.image-container {
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid var(--highlight-color);
+    margin-bottom: 20px;
+    background-color: var(--backdrop-color);
 }
 
-.user-info span {
-    margin-right: 10px;
-    font-size: 20px;
+.image {
+    border: solid 1px var(--content-color);
+    max-height: 250px;
+    height: auto;
+    overflow: hidden;
 }
 
-.logout-button {
-    padding: 4px;
-    width: 32px;
-    height: 32px;
+.remove-button {
+    width: 100%;
 }
