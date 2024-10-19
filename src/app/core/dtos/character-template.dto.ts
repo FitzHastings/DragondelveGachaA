@@ -13,13 +13,16 @@
    limitations under the License.
  */
 
-main {
-    display: inline-flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
+import { GeneralEntity } from '../entities/general-entity';
 
-.container {
-    display: flex;
-    min-height: 100%;
+export interface CharacterTemplateDto extends GeneralEntity {
+    id?: number;
+    name?: string;
+    description?: string;
+    quote?: string;
+    isRollable?: boolean;
+    rarityId?: number;
+    settingId?: number;
+    smallImageId?: number;
+    fullImageId?: number;
 }

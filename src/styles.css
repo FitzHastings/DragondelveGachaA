@@ -69,7 +69,7 @@ body {
 button {
     background-color: var(--content-color);
     padding: 7px;
-    color: #fff;
+    color: var(--text-color);
     border: 3px solid var(--content-color);
     border-radius: 4px;
     cursor: pointer;

@@ -17,25 +17,25 @@
     <table>
         <thead>
         <tr>
-            <th class="table-header table-cell">Username</th>
+            <th class="table-header table-cell">Name</th>
             <th class="table-header table-cell image-column">Img</th>
-            <th class="table-header table-cell">Role</th>
-            <th class="table-header table-cell">Energy</th>
-            <th class="table-header table-cell">Dust</th>
+            <th class="table-header table-cell">Rarity</th>
+            <th class="table-header table-cell">Setting</th>
+            <th class="table-header table-cell">Rollable</th>
             <app-action-table-header class="table-header table-cell actions" [navigateToForm]="navigateToForm"/>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let user of users">
-            <td class="table-cell">{{ user.username }}</td>
-            <app-image-table-cell class="table-cell image-column" [image]="user.image"/>
-            <td class="table-cell">{{ user.role }}</td>
-            <td class="table-cell">{{ '⚡ ' + user.energy }}</td>
-            <td class="table-cell">{{ '✨ ' + user.dust }}</td>
+        <tr *ngFor="let template of templates">
+            <td class="table-cell">{{ template.name }}</td>
+            <app-image-table-cell class="table-cell image-column" [image]="template.smallImage"/>
+            <td class="table-cell">{{ template.rarity?.name }}</td>
+            <td class="table-cell">{{ template.setting?.name }}</td>
+            <td class="table-cell">{{ template.isRollable }}</td>
             <app-action-table-cell class="table-cell actions"
-                                   [navigateToForm]="navigateToForm"
-                                   [removeAction]="deleteUser"
-                                   [entity]="user"
+               [navigateToForm]="navigateToForm"
+               [removeAction]="deleteTemplate"
+               [entity]="template"
             />
         </tr>
         </tbody>

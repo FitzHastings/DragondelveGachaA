@@ -25,6 +25,8 @@ import { RarityComponent } from './feature/main/rarity/rarity.component';
 import { RarityFormComponent } from './feature/main/rarity/form/form.component';
 import { UserComponent } from './feature/main/user/user.component';
 import { UserFormComponent } from './feature/main/user/form/form.component';
+import { TemplateComponent } from './feature/main/template/template.component';
+import { TemplateFormComponent } from './feature/main/template/form/form.component';
 
 export const routes: Routes = [
     {
@@ -40,7 +42,10 @@ export const routes: Routes = [
             { path: 'rarities/form', component: RarityFormComponent },
             { path: 'users', component: UserComponent },
             { path: 'users/form/:id', component: UserFormComponent },
-            { path: 'users/form', component: UserFormComponent }
+            { path: 'users/form', component: UserFormComponent },
+            { path: 'templates', component: TemplateComponent },
+            { path: 'templates/form/:id', component: TemplateFormComponent },
+            { path: 'templates/form', component: TemplateFormComponent }
         ]
     },
     { path: 'login', component: LoginComponent },

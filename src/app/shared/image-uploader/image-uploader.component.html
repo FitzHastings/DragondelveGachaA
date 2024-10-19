@@ -14,10 +14,10 @@
 -->
 
 <div *ngIf="!image?.path" class="form-group">
-    <label for="file">Image:</label>
-    <input type="file" id="file" (change)="onFileSelected($event)">
+    <label for="file">Upload</label>
+    <input type="file" id="file" (change)="onFileSelected($event)" accept="image/*">
     <div *ngIf="fileUploadError">
-        <small>{{ fileUploadError }}</small>
+        <small>{{ fileUploadError }}</small>`
     </div>
 </div>
 

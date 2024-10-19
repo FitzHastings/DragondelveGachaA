@@ -13,7 +13,9 @@
    limitations under the License.
  */
 
-export interface PagedEntities<T> {
+import { GeneralEntity } from './general-entity';
+
+export interface PagedEntities<T extends GeneralEntity> {
     entities: T[];
     total: number;
 }

@@ -25,6 +25,7 @@ import { GeneralEntity } from './general-entity';
  * @class World
  */
 export class World implements GeneralEntity {
+    public static readonly slug = 'world';
     public id?: number;
     public name?: string;
     public images?: ExternalFile[];

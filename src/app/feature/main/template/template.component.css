@@ -13,13 +13,7 @@
    limitations under the License.
  */
 
-main {
-    display: inline-flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.container {
-    display: flex;
-    min-height: 100%;
+h2 {
+    font-size: 26px;
+    margin-left: 17px;
 }

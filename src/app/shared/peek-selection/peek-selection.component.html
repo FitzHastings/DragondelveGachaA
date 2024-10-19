@@ -1,4 +1,4 @@
-/* Copyright 2024 Prokhor Kalinin
+<!-- Copyright 2024 Prokhor Kalinin
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -11,15 +11,10 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
- */
+-->
 
-main {
-    display: inline-flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.container {
-    display: flex;
-    min-height: 100%;
-}
+<select (change)="onSelectionChange($event)">
+    <option *ngFor="let item of items" [value]="item.id" [selected]="selectedValue?.id === item.id">
+        {{ item.name }}
+    </option>
+</select>

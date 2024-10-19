@@ -21,6 +21,7 @@ import { GeneralEntity } from './general-entity';
  * Class representing a Rarity entity that implements the GeneralEntity interface.
  */
 export class Rarity implements GeneralEntity {
+    public static readonly slug = 'rarity';
     public id?: number;
     public name?: string;
     public weight?: number;

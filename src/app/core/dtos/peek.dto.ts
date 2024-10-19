@@ -13,13 +13,12 @@
    limitations under the License.
  */
 
-main {
-    display: inline-flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
+import { GeneralEntity } from '../entities/general-entity';
 
-.container {
-    display: flex;
-    min-height: 100%;
+/**
+ * PeekDto is an interface that extends the GeneralEntity interface.
+ * It represents the structure of a peek data transfer object with an additional property 'name' for human readability.
+ */
+export interface PeekDto extends GeneralEntity {
+    name: string;
 }

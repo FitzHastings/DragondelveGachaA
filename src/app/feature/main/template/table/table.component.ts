@@ -14,41 +14,41 @@
  */
 
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgForOf } from '@angular/common';
+import { Router } from '@angular/router';
 
-import { PagedEntities } from '../../../../core/entities/paged-entities';
-import { User } from '../../../../core/entities/user';
-import { UserService } from '../../../../core/services/user.service';
 import { ActionTableCellComponent } from '../../../../shared/action-table-cell/action-table-cell.component';
 import { ActionTableHeaderComponent } from '../../../../shared/action-table-header/action-table-header.component';
 import { ImageTableCellComponent } from '../../../../shared/image-table-cell/image-table-cell.component';
+import { PagedEntities } from '../../../../core/entities/paged-entities';
+import { CharacterTemplate } from '../../../../core/entities/character-template';
+import { TemplateService } from '../../../../core/services/template.service';
 
 @Component({
-    selector: 'app-users-table',
+    selector: 'app-template-table',
     standalone: true,
     imports: [
         ActionTableCellComponent,
         ActionTableHeaderComponent,
-        NgForOf,
-        ImageTableCellComponent
+        ImageTableCellComponent,
+        NgForOf
     ],
     templateUrl: './table.component.html',
     styleUrl: './table.component.css'
 })
-export class UserTableComponent {
-    public users: User[] = [];
+export class TemplateTableComponent {
+    public templates: CharacterTemplate[] = [];
 
-    public constructor(private userService: UserService, private router: Router) {}
+    public constructor(private templateService: TemplateService, private router: Router) {}
 
     public ngOnInit(): void {
-        this.loadUsers();
+        this.loadTemplates();
     }
 
-    public deleteUser = (id: number): void => {
-        this.userService.deleteUser(id).subscribe(
+    public deleteTemplate = (id: number): void => {
+        this.templateService.deleteTemplate(id).subscribe(
             () => {
-                this.loadUsers();
+                this.loadTemplates();
             },
             (error: unknown) => {
                 console.error('There was an error retrieving the worlds!', error);
@@ -58,15 +58,15 @@ export class UserTableComponent {
 
     public navigateToForm = (id: number | undefined = undefined): void => {
         if (id)
-            this.router.navigate(['/users/form', id]);
+            this.router.navigate(['/templates/form', id]);
         else
-            this.router.navigate(['/users/form']);
+            this.router.navigate(['/templates/form']);
     };
 
-    private loadUsers(): void {
-        this.userService.fetchUsers().subscribe(
-            (data: PagedEntities<User>) => {
-                this.users = data.entities;
+    private loadTemplates(): void {
+        this.templateService.fetchTemplates().subscribe(
+            (data: PagedEntities<CharacterTemplate>) => {
+                this.templates = data.entities;
             },
             (error: unknown) => {
                 console.error('There was an error retrieving the worlds!', error);

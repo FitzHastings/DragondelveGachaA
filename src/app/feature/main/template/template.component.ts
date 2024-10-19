@@ -13,13 +13,19 @@
    limitations under the License.
  */
 
-main {
-    display: inline-flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
+import { Component } from '@angular/core';
 
-.container {
-    display: flex;
-    min-height: 100%;
+import { TemplateTableComponent } from './table/table.component';
+
+@Component({
+    selector: 'app-template',
+    standalone: true,
+    imports: [
+        TemplateTableComponent
+    ],
+    templateUrl: './template.component.html',
+    styleUrl: './template.component.css'
+})
+export class TemplateComponent {
+
 }
