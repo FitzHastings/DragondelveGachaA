@@ -74,8 +74,9 @@ export class AuthService {
      */
     public isAuthenticated(): Observable<string> {
         const token = this.getToken();
-        if (!token)
+        if (!token) 
             return of('');
+        
 
         return this.http.get<{ session: { username: string } }>(this.verifyTokenUrl).pipe(
             map((response) => response.session.username),

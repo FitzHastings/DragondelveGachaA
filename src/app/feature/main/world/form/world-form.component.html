@@ -17,10 +17,10 @@
     <h1 *ngIf="!worldId">Add New World</h1>
     <h1 *ngIf="worldId">Edit World</h1>
 </div>
-<form class="form-container form" [formGroup]="worldForm" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="worldForm" class="form-container form">
     <div class="form-group">
         <label for="name">World Name:</label>
-        <input type="text" id="name" formControlName="name">
+        <input formControlName="name" id="name" type="text">
         <div *ngIf="worldForm.get('name')?.invalid && worldForm.get('name')?.touched">
             <small>Name is required.</small>
         </div>
@@ -28,14 +28,14 @@
 
     <label>World Logo:</label>
     <app-image-uploader
-        [image]="image"
-        (imageChanged)="onImageChanged($event)">
+        (imageChanged)="onImageChanged($event)"
+        [image]="image">
     </app-image-uploader>
 
     <div class="form-group">
-        <button class="form-button" type="submit" [disabled]="worldForm.invalid">Submit</button>
+        <button [disabled]="worldForm.invalid" class="form-button" type="submit">Submit</button>
         <div *ngIf="errorMessage">
-            <small class="error-message" >{{ errorMessage }}</small>
+            <small class="error-message">{{ errorMessage }}</small>
         </div>
     </div>
 </form>

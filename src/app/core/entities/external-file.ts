@@ -22,6 +22,6 @@ import { GeneralEntity } from './general-entity';
  * @property {number} id - The unique identifier for the external file.
  * @property {string} path  path to the external file.
  */
-export interface ExternalFile extends GeneralEntity{
+export interface ExternalFile extends GeneralEntity {
     path: string;
 }

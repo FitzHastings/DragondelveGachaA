@@ -22,20 +22,20 @@
             <th class="table-header table-cell">Rarity</th>
             <th class="table-header table-cell">Setting</th>
             <th class="table-header table-cell">Rollable</th>
-            <app-action-table-header class="table-header table-cell actions" [navigateToForm]="navigateToForm"/>
+            <app-action-table-header [navigateToForm]="navigateToForm" class="table-header table-cell actions"/>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let template of templates">
             <td class="table-cell">{{ template.name }}</td>
-            <app-image-table-cell class="table-cell image-column" [image]="template.smallImage"/>
+            <app-image-table-cell [image]="template.smallImage" class="table-cell image-column"/>
             <td class="table-cell">{{ template.rarity?.name }}</td>
             <td class="table-cell">{{ template.setting?.name }}</td>
             <td class="table-cell">{{ template.isRollable }}</td>
-            <app-action-table-cell class="table-cell actions"
-               [navigateToForm]="navigateToForm"
-               [removeAction]="deleteTemplate"
-               [entity]="template"
+            <app-action-table-cell [entity]="template"
+                                   [navigateToForm]="navigateToForm"
+                                   [removeAction]="deleteTemplate"
+                                   class="table-cell actions"
             />
         </tr>
         </tbody>

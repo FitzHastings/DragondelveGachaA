@@ -109,8 +109,9 @@ export class UserFormComponent {
                 user.id = this.userId;
                 const dto = user.toDto();
 
-                if (this.userForm.get('password')?.touched && this.userForm.get('password')?.value !== '')
+                if (this.userForm.get('password')?.touched && this.userForm.get('password')?.value !== '') 
                     dto.password = this.userForm.get('password')?.value;
+                
 
                 this.userService.updateUser(dto).subscribe({
                     next: () => this.router.navigate(['/users']),
@@ -120,8 +121,9 @@ export class UserFormComponent {
                 // Add mode
 
                 const dto = user.toDto();
-                if (this.userForm.get('password')?.touched && this.userForm.get('password')?.value !== '')
+                if (this.userForm.get('password')?.touched && this.userForm.get('password')?.value !== '') 
                     dto.password = this.userForm.get('password')?.value;
+                
 
                 this.userService.createUser(dto).subscribe({
                     next: () => this.router.navigate(['/users']),

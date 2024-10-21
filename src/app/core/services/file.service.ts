@@ -38,7 +38,6 @@ export class FileService {
     public uploadImage(file: File): Observable<ExternalFile> {
         const formData = new FormData();
         formData.append('file', file);
-        return this.http.post<ExternalFile>(this.uploadFileUrl, formData, {
-        });
+        return this.http.post<ExternalFile>(this.uploadFileUrl, formData, {});
     }
 }

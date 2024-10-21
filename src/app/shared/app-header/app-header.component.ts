@@ -39,7 +39,7 @@ export class AppHeaderComponent {
     public ngOnInit(): void {
         this.username = this.authService.isAuthenticated();
         this.username.subscribe((isAuthenticated) => {
-            if (!isAuthenticated)
+            if (!isAuthenticated) 
                 this.router.navigate(['/login']);
         });
     }

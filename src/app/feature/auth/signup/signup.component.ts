@@ -66,9 +66,9 @@ export class SignupComponent {
         const password = form.get('password');
         const confirmPassword = form.get('confirmPassword');
 
-        if (password && confirmPassword && password.value !== confirmPassword.value)
+        if (password && confirmPassword && password.value !== confirmPassword.value) 
             confirmPassword.setErrors({ mismatch: true });
-        else if (confirmPassword != null)
+        else if (confirmPassword != null) 
             confirmPassword.setErrors(null);
     }
 }

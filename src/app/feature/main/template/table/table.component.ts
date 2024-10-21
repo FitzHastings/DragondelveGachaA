@@ -39,7 +39,8 @@ import { TemplateService } from '../../../../core/services/template.service';
 export class TemplateTableComponent {
     public templates: CharacterTemplate[] = [];
 
-    public constructor(private templateService: TemplateService, private router: Router) {}
+    public constructor(private templateService: TemplateService, private router: Router) {
+    }
 
     public ngOnInit(): void {
         this.loadTemplates();
@@ -57,9 +58,9 @@ export class TemplateTableComponent {
     };
 
     public navigateToForm = (id: number | undefined = undefined): void => {
-        if (id)
+        if (id) 
             this.router.navigate(['/templates/form', id]);
-        else
+        else 
             this.router.navigate(['/templates/form']);
     };
 

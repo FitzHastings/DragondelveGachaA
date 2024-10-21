@@ -17,10 +17,10 @@
     <h1 *ngIf="!templateId">Add New Template</h1>
     <h1 *ngIf="templateId">Edit Template</h1>
 </div>
-<form class="form-container form" [formGroup]="templateForm" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="templateForm" class="form-container form">
     <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" id="name" formControlName="name">
+        <input formControlName="name" id="name" type="text">
         <div *ngIf="templateForm.get('name')?.invalid && templateForm.get('name')?.touched">
             <small class="error-message">Name is required.</small>
         </div>
@@ -30,10 +30,10 @@
         <label>Rarity:</label>
         <div class="selector-container">
             <app-peek-selection
-                class="selector"
+                (valueChanged)="onRarityChanged($event)"
                 [items]="rarities"
                 [selectedValue]="selectedRarity"
-                (valueChanged)="onRarityChanged($event)"
+                class="selector"
             ></app-peek-selection>
         </div>
     </div>
@@ -42,17 +42,17 @@
         <label>Setting:</label>
         <div class="selector-container">
             <app-peek-selection
-                class="selector"
+                (valueChanged)="onSettingChanged($event)"
                 [items]="settings"
                 [selectedValue]="selectedSetting"
-                (valueChanged)="onSettingChanged($event)"
+                class="selector"
             ></app-peek-selection>
         </div>
     </div>
 
     <div class="form-group">
         <label class="short-label" for="description">Description:</label>
-        <textarea id="description" rows="4" formControlName="description"></textarea>
+        <textarea formControlName="description" id="description" rows="4"></textarea>
         <div *ngIf="templateForm.get('description')?.invalid && templateForm.get('description')?.touched">
             <small class="error-message">Description is Invalid</small>
         </div>
@@ -60,7 +60,7 @@
 
     <div class="form-group">
         <label for="quote">Quote:</label>
-        <input type="text" id="quote" formControlName="quote">
+        <input formControlName="quote" id="quote" type="text">
         <div *ngIf="templateForm.get('quote')?.invalid && templateForm.get('quote')?.touched">
             <small class="error-message">Energy is Invalid</small>
         </div>
@@ -68,7 +68,7 @@
 
     <div class="form-group">
         <label for="rollable">Rollable:</label>
-        <input type="checkbox" id="rollable" formControlName="isRollable">
+        <input formControlName="isRollable" id="rollable" type="checkbox">
         <div *ngIf="templateForm.get('isRollable')?.invalid && templateForm.get('isRollable')?.touched">
             <small class="error-message">Name is required.</small>
         </div>
@@ -76,20 +76,20 @@
 
     <label>Full Image:</label>
     <app-image-uploader
-        [image]="fullImage"
         (imageChanged)="onFullImageChanged($event)"
+        [image]="fullImage"
     />
 
     <label>Small Image:</label>
     <app-image-uploader
-        [image]="smallImage"
         (imageChanged)="onSmallImageChanged($event)"
+        [image]="smallImage"
     />
 
     <div class="form-group">
-        <button class="form-button" type="submit" [disabled]="templateForm.invalid">Submit</button>
+        <button [disabled]="templateForm.invalid" class="form-button" type="submit">Submit</button>
         <div *ngIf="errorMessage">
-            <small class="error-message" >{{ errorMessage }}</small>
+            <small class="error-message">{{ errorMessage }}</small>
         </div>
     </div>
 </form>

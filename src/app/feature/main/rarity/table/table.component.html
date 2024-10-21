@@ -19,17 +19,17 @@
         <tr>
             <th class="table-header table-cell">Name</th>
             <th class="table-header table-cell">Weight</th>
-            <app-action-table-header class="table-header table-cell actions" [navigateToForm]="navigateToForm"/>
+            <app-action-table-header [navigateToForm]="navigateToForm" class="table-header table-cell actions"/>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let rarity of rarities">
             <td class="table-cell">{{ rarity.name }}</td>
             <td class="table-cell">{{ rarity.weight }}</td>
-            <app-action-table-cell class="table-cell actions"
+            <app-action-table-cell [entity]="rarity"
                                    [navigateToForm]="navigateToForm"
                                    [removeAction]="deleteRarity"
-                                   [entity]="rarity"
+                                   class="table-cell actions"
             />
         </tr>
         </tbody>

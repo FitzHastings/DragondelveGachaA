@@ -14,12 +14,12 @@
 -->
 
 <div class="cell-body">
-<div class="toolbar">
-    <button (click)="navigateToForm && navigateToForm(entity?.id)" class="table-button edit-button">
-        <img src="/icons/edit-icon.png" alt="e">
-    </button>
-    <button (click)="removeAction && removeAction(entity?.id || -1)" class="table-button remove-button">
-        <img src="/icons/minus-icon.png" alt="-">
-    </button>
-</div>
+    <div class="toolbar">
+        <button (click)="navigateToForm && navigateToForm(entity?.id)" class="table-button edit-button">
+            <img alt="e" src="/icons/edit-icon.png">
+        </button>
+        <button (click)="removeAction && removeAction(entity?.id || -1)" class="table-button remove-button">
+            <img alt="-" src="/icons/minus-icon.png">
+        </button>
+    </div>
 </div>

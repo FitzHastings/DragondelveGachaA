@@ -15,13 +15,13 @@
 
 <img
     *ngIf="image?.path"
-    class="thumbnail-image"
     [src]="imagePath"
     alt="img"
+    class="thumbnail-image"
 />
 <img
     *ngIf="!image?.path"
+    alt="?"
     class="thumbnail-image"
     src="/icons/no-image2.png"
-    alt="?"
 />

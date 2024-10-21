@@ -40,7 +40,8 @@ import { ActionTableHeaderComponent } from '../../../../shared/action-table-head
 export class WorldTableComponent implements OnInit {
     public worlds: World[] = [];
 
-    public constructor(private worldService: WorldService, private router: Router) {}
+    public constructor(private worldService: WorldService, private router: Router) {
+    }
 
     public ngOnInit(): void {
         this.loadWorlds();

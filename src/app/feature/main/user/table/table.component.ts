@@ -39,7 +39,8 @@ import { ImageTableCellComponent } from '../../../../shared/image-table-cell/ima
 export class UserTableComponent {
     public users: User[] = [];
 
-    public constructor(private userService: UserService, private router: Router) {}
+    public constructor(private userService: UserService, private router: Router) {
+    }
 
     public ngOnInit(): void {
         this.loadUsers();
@@ -57,9 +58,9 @@ export class UserTableComponent {
     };
 
     public navigateToForm = (id: number | undefined = undefined): void => {
-        if (id)
+        if (id) 
             this.router.navigate(['/users/form', id]);
-        else
+        else 
             this.router.navigate(['/users/form']);
     };
 

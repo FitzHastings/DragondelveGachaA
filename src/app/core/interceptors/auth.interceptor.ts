@@ -14,14 +14,15 @@
  */
 
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    public constructor(private authService: AuthService) {}
+    public constructor(private authService: AuthService) {
+    }
 
     public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         if (request.headers.has('X-Skip-Auth')) {
@@ -31,12 +32,13 @@ export class AuthInterceptor implements HttpInterceptor {
         }
 
         const token = this.authService.getToken();
-        if (token)
+        if (token) 
             request = request.clone({
                 setHeaders: {
                     Authorization: `Bearer ${token}`
                 }
             });
+        
 
         return next.handle(request);
     }

@@ -31,10 +31,10 @@
     <h1 *ngIf="!rarityId">Add New Rarity</h1>
     <h1 *ngIf="rarityId">Edit Rarity</h1>
 </div>
-<form class="form-container form" [formGroup]="rarityForm" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="rarityForm" class="form-container form">
     <div class="form-group">
         <label for="name">Rarity Name:</label>
-        <input type="text" id="name" formControlName="name">
+        <input formControlName="name" id="name" type="text">
         <div *ngIf="rarityForm.get('name')?.invalid && rarityForm.get('name')?.touched">
             <small class="error-message">Name is required.</small>
         </div>
@@ -42,16 +42,16 @@
 
     <div class="form-group">
         <label for="weight">Rarity Weight:</label>
-        <input type="text" id="weight" formControlName="weight">
+        <input formControlName="weight" id="weight" type="text">
         <div *ngIf="rarityForm.get('name')?.invalid && rarityForm.get('name')?.touched">
             <small class="error-message">Weight is required.</small>
         </div>
     </div>
 
     <div class="form-group">
-        <button class="form-button" type="submit" [disabled]="rarityForm.invalid">Submit</button>
+        <button [disabled]="rarityForm.invalid" class="form-button" type="submit">Submit</button>
         <div *ngIf="errorMessage">
-            <small class="error-message" >{{ errorMessage }}</small>
+            <small class="error-message">{{ errorMessage }}</small>
         </div>
     </div>
 </form>

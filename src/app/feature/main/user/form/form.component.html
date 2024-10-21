@@ -17,10 +17,10 @@
     <h1 *ngIf="!userId">Add New User</h1>
     <h1 *ngIf="userId">Edit User</h1>
 </div>
-<form class="form-container form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="userForm" class="form-container form">
     <div class="form-group">
         <label for="username">Username:</label>
-        <input type="text" id="username" formControlName="username">
+        <input formControlName="username" id="username" type="text">
         <div *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched">
             <small class="error-message">Username is required.</small>
         </div>
@@ -28,7 +28,7 @@
 
     <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" id="password" formControlName="password">
+        <input formControlName="password" id="password" type="password">
         <div *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
             <small class="error-message">Password is Invalid</small>
         </div>
@@ -36,13 +36,13 @@
 
     <label>Image:</label>
     <app-image-uploader
-        [image]="image"
         (imageChanged)="onImageChanged($event)"
+        [image]="image"
     />
 
     <div class="form-group">
         <label for="role">Role:</label>
-        <input type="text" id="role" formControlName="role">
+        <input formControlName="role" id="role" type="text">
         <div *ngIf="userForm.get('role')?.invalid && userForm.get('role')?.touched">
             <small class="error-message">Role is Invalid</small>
         </div>
@@ -50,7 +50,7 @@
 
     <div class="form-group">
         <label for="energy">Energy:</label>
-        <input type="text" id="energy" formControlName="energy">
+        <input formControlName="energy" id="energy" type="text">
         <div *ngIf="userForm.get('energy')?.invalid && userForm.get('energy')?.touched">
             <small class="error-message">Energy is Invalid</small>
         </div>
@@ -58,16 +58,16 @@
 
     <div class="form-group">
         <label for="dust">Dust:</label>
-        <input type="text" id="dust" formControlName="dust">
+        <input formControlName="dust" id="dust" type="text">
         <div *ngIf="userForm.get('dust')?.invalid && userForm.get('dust')?.touched">
             <small class="error-message">Dust is Invalid</small>
         </div>
     </div>
 
     <div class="form-group">
-        <button class="form-button" type="submit" [disabled]="userForm.invalid">Submit</button>
+        <button [disabled]="userForm.invalid" class="form-button" type="submit">Submit</button>
         <div *ngIf="errorMessage">
-            <small class="error-message" >{{ errorMessage }}</small>
+            <small class="error-message">{{ errorMessage }}</small>
         </div>
     </div>
 </form>

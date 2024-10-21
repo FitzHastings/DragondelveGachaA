@@ -35,8 +35,9 @@ export class PeekSelectionComponent {
     protected onSelectionChange(event: Event): void {
         const selectedId = Number((event.target as HTMLSelectElement).value);
         const selectedItem = this.items.find((item) => item.id === selectedId);
-        if (selectedItem && selectedItem !== this.selectedValue)
+        if (selectedItem && selectedItem !== this.selectedValue) 
             this.valueChanged.emit(selectedItem);
+        
         this.selectedValue = selectedItem;
     }
 }

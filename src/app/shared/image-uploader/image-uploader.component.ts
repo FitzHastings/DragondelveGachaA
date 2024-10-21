@@ -22,6 +22,10 @@ export class ImageUploaderComponent {
     public constructor(private readonly fileService: FileService) {
     }
 
+    public get imagePath(): string {
+        return `${apiUrl}/${this.image?.path}`;
+    }
+
     public onFileSelected(event: Event): void {
         const input = event.target as HTMLInputElement;
         if (input.files && input.files.length > 0) {
@@ -37,12 +41,8 @@ export class ImageUploaderComponent {
         }
     }
 
-    public removeImage():void {
+    public removeImage(): void {
         this.image = undefined;
         this.imageChanged.emit(this.image);
-    }
-
-    public get imagePath(): string {
-        return `${apiUrl}/${this.image?.path}`;
     }
 }

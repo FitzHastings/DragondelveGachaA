@@ -39,7 +39,8 @@ import { PagedEntities } from '../../../../core/entities/paged-entities';
 export class RarityTableComponent {
     public rarities: Rarity[] = [];
 
-    public constructor(private rarityService: RarityService, private router: Router) {}
+    public constructor(private rarityService: RarityService, private router: Router) {
+    }
 
     public ngOnInit(): void {
         this.loadRarities();
@@ -57,9 +58,9 @@ export class RarityTableComponent {
     };
 
     public navigateToForm = (id: number | undefined = undefined): void => {
-        if (id)
+        if (id) 
             this.router.navigate(['/rarities/form', id]);
-        else
+        else 
             this.router.navigate(['/rarities/form']);
     };
 

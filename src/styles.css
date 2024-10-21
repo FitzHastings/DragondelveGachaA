@@ -115,7 +115,7 @@ button:enabled:active {
     border-color: var(--confirmation-content-color);
 }
 
-.add-button:enabled:active{
+.add-button:enabled:active {
     background-color: var(--confirmation-content-color);
     border-color: var(--confirmation-color);
 }
