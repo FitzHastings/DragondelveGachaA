@@ -1,4 +1,4 @@
-/* Copyright 2024 Prokhor Kalinin
+/* Copyright 2024-2025 Prokhor Kalinin
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -50,17 +50,14 @@ export class TemplateTableComponent {
         this.templateService.deleteTemplate(id).subscribe(
             () => {
                 this.loadTemplates();
-            },
-            (error: unknown) => {
-                console.error('There was an error retrieving the worlds!', error);
             }
         );
     };
 
     public navigateToForm = (id: number | undefined = undefined): void => {
-        if (id) 
+        if (id)
             this.router.navigate(['/templates/form', id]);
-        else 
+        else
             this.router.navigate(['/templates/form']);
     };
 
@@ -68,9 +65,6 @@ export class TemplateTableComponent {
         this.templateService.fetchTemplates().subscribe(
             (data: PagedEntities<CharacterTemplate>) => {
                 this.templates = data.entities;
-            },
-            (error: unknown) => {
-                console.error('There was an error retrieving the worlds!', error);
             }
         );
     }

@@ -1,4 +1,4 @@
-<!-- Copyright 2024 Prokhor Kalinin
+<!-- Copyright 2024-2025 Prokhor Kalinin
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -23,15 +23,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let rarity of rarities">
-            <td class="table-cell">{{ rarity.name }}</td>
-            <td class="table-cell">{{ rarity.weight }}</td>
-            <app-action-table-cell [entity]="rarity"
-                                   [navigateToForm]="navigateToForm"
-                                   [removeAction]="deleteRarity"
-                                   class="table-cell actions"
-            />
-        </tr>
+            @for (rarity of rarities; track rarity.id) {
+                <tr>
+                    <td class="table-cell">{{ rarity.name }}</td>
+                    <td class="table-cell">{{ rarity.weight }}</td>
+                    <app-action-table-cell [entity]="rarity"
+                       [navigateToForm]="navigateToForm"
+                       [removeAction]="deleteRarity"
+                       class="table-cell actions"
+                    />
+                </tr>
+            }
         </tbody>
     </table>
 </div>
