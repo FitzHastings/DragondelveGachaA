@@ -24,4 +24,6 @@ import { GeneralEntity } from './general-entity';
  */
 export interface ExternalFile extends GeneralEntity {
     path: string;
+    optimizedPath?: string;
+    thumbnailPath?: string;
 }

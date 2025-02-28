@@ -24,7 +24,7 @@ import { ExternalFile } from '../entities/external-file';
     providedIn: 'root'
 })
 export class FileService {
-    private uploadFileUrl = `${apiUrl}/file/upload`;
+    private uploadFileUrl = `${apiUrl}/file/upload/character`;
 
     public constructor(private http: HttpClient) {
     }
