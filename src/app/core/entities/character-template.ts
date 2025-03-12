@@ -27,7 +27,6 @@ export class CharacterTemplate implements GeneralEntity {
     public quote?: string;
     public isRollable?: boolean;
     public rarity?: Rarity;
-    public smallImage?: ExternalFile;
     public fullImage?: ExternalFile;
     public setting?: World;
 
@@ -40,7 +39,6 @@ export class CharacterTemplate implements GeneralEntity {
             isRollable: this.isRollable,
             rarityId: this.rarity?.id,
             fullImageId: this.fullImage?.id,
-            smallImageId: this.smallImage?.id,
             settingId: this.setting?.id
         };
     }

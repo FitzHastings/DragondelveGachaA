@@ -28,7 +28,7 @@
         <tbody>
         <tr *ngFor="let template of templates">
             <td class="table-cell">{{ template.name }}</td>
-            <app-image-table-cell [image]="template.smallImage" class="table-cell image-column"/>
+            <app-image-table-cell [image]="template.fullImage" class="table-cell image-column"/>
             <td class="table-cell">{{ template.rarity?.name }}</td>
             <td class="table-cell">{{ template.setting?.name }}</td>
             <td class="table-cell">{{ template.isRollable }}</td>

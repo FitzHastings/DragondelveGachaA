@@ -64,7 +64,6 @@ export class TemplateFormComponent {
             quote: ['', [Validators.required]],
             isRollable: [false, [Validators.required]],
             fullImageId: ['', []],
-            smallImageId: ['', []],
             rarityId: [null, Validators.required],
             settingId: [null, Validators.required]
         });
@@ -82,17 +81,11 @@ export class TemplateFormComponent {
                         quote: template.quote,
                         isRollable: template.isRollable,
                         fullImageId: template.fullImage?.id,
-                        smallImageId: template.smallImage?.id,
                         rarityId: template.rarity?.id,
                         settingId: template.setting?.id
                     };
 
-                    //isRollable
-                    //isRollable
-
-
                     this.fullImage = template.fullImage;
-                    this.smallImage = template.smallImage;
                     this.selectedSetting = template.setting as PeekDto;
                     this.selectedRarity = template.rarity as PeekDto;
 
@@ -102,10 +95,14 @@ export class TemplateFormComponent {
 
             this.peekService.peekAt(World.slug).subscribe((settings) => {
                 this.settings = settings;
+                if (settings?.length > 0)
+                    this.templateForm.patchValue({ settingId: settings[0].id });
             });
 
             this.peekService.peekAt(Rarity.slug).subscribe((rarities) => {
                 this.rarities = rarities;
+                if (rarities?.length > 0)
+                    this.templateForm.patchValue({ rarityId: rarities[0].id });
             });
         });
     }
@@ -118,7 +115,6 @@ export class TemplateFormComponent {
             template.isRollable = this.templateForm.value['isRollable'];
             template.quote = this.templateForm.value['quote'];
             template.fullImage = { id: this.templateForm.value['fullImageId'], path: '' };
-            template.smallImage = { id: this.templateForm.value['smallImageId'], path: '' };
             template.rarity = { id: this.templateForm.value['rarityId'] } as Rarity;
             template.setting = { id: this.templateForm.value['settingId'] } as World;
 
@@ -154,9 +150,5 @@ export class TemplateFormComponent {
 
     public onFullImageChanged(image: ExternalFile): void {
         this.templateForm.get('fullImageId')?.setValue(image.id);
-    }
-
-    public onSmallImageChanged(image: ExternalFile): void {
-        this.templateForm.get('smallImageId')?.setValue(image.id);
     }
 }

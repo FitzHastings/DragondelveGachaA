@@ -36,6 +36,6 @@ export class ImageTableCellComponent {
     @Input() public image?: ExternalFile;
 
     public get imagePath(): string {
-        return `${apiUrl}/${this.image?.path}`;
+        return `${apiUrl}/${this.image?.thumbnailPath}`;
     }
 }

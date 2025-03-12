@@ -23,6 +23,5 @@ export interface CharacterTemplateDto extends GeneralEntity {
     isRollable?: boolean;
     rarityId?: number;
     settingId?: number;
-    smallImageId?: number;
     fullImageId?: number;
 }
